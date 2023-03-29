@@ -8,7 +8,7 @@ import navIcon4 from '../assets/img/nav-icon4.svg';
 
 export const NavBar = () => {
   const [activeLink,setActiveLink] = useState('home')
-  const [scrolled,seScrolled] = useState(false)
+  let [scrolled,seScrolled] = useState(false)
   
   useEffect(() => {
         const onScroll = () =>{

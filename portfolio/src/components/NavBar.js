@@ -8,15 +8,15 @@ import navIcon4 from '../assets/img/nav-icon4.svg';
 
 export const NavBar = () => {
   const [activeLink,setActiveLink] = useState('home')
-  let [scrolled,seScrolled] = useState(false)
+  let [scrolled,setScrolled] = useState(false)
   
   useEffect(() => {
         const onScroll = () =>{
             if(window.scrollY > 50){
-                seScrolled = true
+                setScrolled = true
             }
             else{
-                seScrolled = false;
+                setScrolled = false;
             }
         }
         /*
@@ -47,10 +47,10 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-                <a href='https://www.linkedin.com/in/afraz-butt-555362261/'><img src={navIcon1} alt="LinkedIn"/></a>
-                <a href='https://github.com/buttafraz22'><img src={navIcon2} alt="Github"/></a>
-                <a href='https://www.instagram.com/buttafraz/'><img src={navIcon3} alt="Instagram"/></a>
-                <a href='https://gitlab.com/buttafraz22'><img src={navIcon4} alt="Gitlab"/></a>
+                <a href='https://www.linkedin.com/in/afraz-butt-555362261/' target="_blank" rel="noopener noreferrer"><img src={navIcon1} alt="LinkedIn"/></a>
+                <a href='https://github.com/buttafraz22' target="_blank" rel="noopener noreferrer"><img src={navIcon2} alt="Github"/></a>
+                <a href='https://www.instagram.com/buttafraz/' target="_blank" rel="noopener noreferrer"><img src={navIcon3} alt="Instagram"/></a>
+                <a href='https://gitlab.com/buttafraz22' target="_blank" rel="noopener noreferrer"><img src={navIcon4} alt="Gitlab"/></a>
             </div>
             <button className='contactUs' onClick={() => console.log('connect')}>
                 <span>Contact Me!</span>

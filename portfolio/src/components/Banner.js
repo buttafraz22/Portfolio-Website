@@ -50,7 +50,7 @@ export const Banner = () =>{
                         <span className="tagline">
                             Welcome to my Portfolio Website!
                         </span>
-                        <h1>I am Afraz Butt <span className="wrap"><p>{text}</p></span></h1>
+                        <h1>I am Afraz Butt <span className="wrap"><p><h3>{text}</h3></p></span></h1>
                         <p> I am (currently) a second year student at the prestigious
                             University of Engineering and Technology (UET), Lahore's 
                             Computer Science Department. Having grown up halfway in Jeddah 

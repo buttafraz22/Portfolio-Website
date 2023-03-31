@@ -22,6 +22,14 @@ export const Projects = () => {
         title: "ConResult- OBE Student Management",
         github_url: "https://gitlab.com/buttafraz22/2021-cs-12-database-mid-project"
     },
+    {
+        title: "Spotify Clone",
+        github_url: "https://github.com/buttafraz22/spotify_clone_Afraz"
+    },
+    {
+        title: "Web based Piano",
+        github_url: "https://github.com/buttafraz22/Afraz_piano"
+    },
   ];
 
   return (
@@ -32,13 +40,28 @@ export const Projects = () => {
               <div>
                 <h2>Projects</h2>
                  <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                  <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                  <Nav className="nav-pills mb-5 justify-content-center align-items-center flex-row" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp">
                     <Tab.Pane eventKey="first">
+                      <Row>
+                        {
+                          projects.map((project, index) => {
+                            return (
+                                <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                                )
+                            })
+                        }
+                      </Row>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="second">
                       <Row>
                         {
                           projects.map((project, index) => {

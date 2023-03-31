@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from '../assets/img/logo.svg';
-import navIcon1 from '../assets/img/nav-icon1.svg';
-import navIcon2 from '../assets/img/nav-icon2.svg';
-import navIcon3 from '../assets/img/nav-icon3.svg';
-import navIcon4 from '../assets/img/nav-icon4.svg';
+import { useState, useEffect } from "react"
+import { Navbar, Nav, Container } from "react-bootstrap"
+import logo from '../assets/img/logo.svg'
+import navIcon1 from '../assets/img/nav-icon1.svg'
+import navIcon2 from '../assets/img/nav-icon2.svg'
+import navIcon3 from '../assets/img/nav-icon3.svg'
+import navIcon4 from '../assets/img/nav-icon4.svg'
+
 
 export const NavBar = () => {
   const [activeLink,setActiveLink] = useState('home')
@@ -52,7 +53,9 @@ export const NavBar = () => {
                 <a href='https://www.instagram.com/buttafraz/' target="_blank" rel="noopener noreferrer"><img src={navIcon3} alt="Instagram"/></a>
                 <a href='https://gitlab.com/buttafraz22' target="_blank" rel="noopener noreferrer"><img src={navIcon4} alt="Gitlab"/></a>
             </div>
-            <button className='contactUs' onClick={() => console.log('connect')}>
+            <button className='contactUs' onClick={() => {
+              console.log("connect")
+            }}>
                 <span>Contact Me!</span>
             </button>
           </span>

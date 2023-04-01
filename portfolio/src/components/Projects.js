@@ -8,30 +8,54 @@ export const Projects = () => {
   const projects = [
     {
       title: "Model Scalar Engine",
-      github_url: "https://github.com/buttafraz22/ModelScalarEngine"
+      github_url: "https://github.com/buttafraz22/ModelScalarEngine",
+      description: 'A three dimensional object renderer engine in Pygame.'
     },
     {
         title: "Cars Details Platform",
-        github_url: "https://gitlab.com/buttafraz22/cs261f22pid01"
+        github_url: "https://gitlab.com/buttafraz22/cs261f22pid01",
+        description: 'Cars Platform using integrated web scrapping.'
     },
     {
         title: "Distribution Management System",
-        github_url: "https://gitlab.com/buttafraz22/cs261f22finalpid01"
+        github_url: "https://gitlab.com/buttafraz22/cs261f22finalpid01",
+        description: 'A distribution management system having integrated Google Maps API.'
     },
     {
         title: "ConResult- OBE Student Management",
-        github_url: "https://gitlab.com/buttafraz22/2021-cs-12-database-mid-project"
+        github_url: "https://gitlab.com/buttafraz22/2021-cs-12-database-mid-project",
+        description: 'An Outcome Base Education Management System.'
     },
     {
         title: "Spotify Clone",
-        github_url: "https://github.com/buttafraz22/spotify_clone_Afraz"
+        github_url: "https://github.com/buttafraz22/spotify_clone_Afraz",
+        description: 'Self explanatory.'
     },
     {
         title: "Web based Piano",
-        github_url: "https://github.com/buttafraz22/Afraz_piano"
+        github_url: "https://github.com/buttafraz22/Afraz_piano",
+        description: 'Self Explanatory.'
     },
   ];
 
+  const projectsPage2 = [
+    {
+      title: "Model Scalar Engine",
+      github_url: "https://github.com/buttafraz22/ModelScalarEngine",
+      description: 'A three dimensional object renderer engine in Pygame.'
+    },
+    {
+        title: "Cars Details Platform",
+        github_url: "https://gitlab.com/buttafraz22/cs261f22pid01",
+        description: 'Cars Platform using integrated web scrapping.'
+    },
+    {
+        title: "Distribution Management System",
+        github_url: "https://gitlab.com/buttafraz22/cs261f22finalpid01",
+        description: 'A distribution management system having integrated Google Maps API.'
+    },
+    
+  ];
   return (
     <section className="project" id="projects">
       <Container>
@@ -64,11 +88,11 @@ export const Projects = () => {
                     <Tab.Pane eventKey="second">
                       <Row>
                         {
-                          projects.map((project, index) => {
+                          projectsPage2.map((projectsPage2, index) => {
                             return (
                                 <ProjectCard
                                 key={index}
-                                {...project}
+                                {...projectsPage2}
                                 />
                                 )
                             })

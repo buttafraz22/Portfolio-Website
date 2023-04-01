@@ -1,89 +1,46 @@
-import { useState } from "react"
-import { Container, Row, Col } from "react-bootstrap"
-import contactImg from "../assets/img/contact-img.svg"
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
-export default Contact = () => {
-    const formInputDetails = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        message: ''
-    }
+export const Contact = () => {
+  const form = useRef();
+  const [clear, setClear] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
 
-    const [FormDetails, setFormDetails] = useState(formInputDetails)    // for form details
-    const [Button, setButton] = useState('Send')    // Send button state
-    const [status, setStatus] = useState({})    // API handler
-    
-    const onFormUpdate = (category,value) =>{
-        setFormDetails({
-            ...formInputDetails,
-            [category]:value,   // update only that category what is required
-        })
-    }
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setButton("Sending...");
-        let response = await fetch("http://localhost:5000/contact", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-          },
-          body: JSON.stringify(formDetails)
-        });
-        setButtonText("Send")
-        let result = await response.json()
-        setFormDetails(formInputDetails)
-        if (result.code == 200) {
-          setStatus({ succes: true, message: 'Message sent successfully'})
-        } 
-        else {
-          setStatus({ succes: false, message: 'Something went wrong, please try again later.'})
-        }
-      }
+    emailjs.sendForm('service_cq0yvn9', 'template_i0gvj09', form.current, 'bCzBaxDrsO6hT9K36')
+      .then((result) => {
+          console.log(result.text);
+          
+      }, (error) => {
+          console.log(error.text);
+          
+      });
 
-    return(
-        <section className="contact" id="connect">
-            <Container>
-                <Row className="align-items-center">
-                    <Col md={6}>
-                        <img src={contactImg} alt="Contact Us"/>
-                    </Col>
-                    <Col md={6}>
-                        <h2>Get In Touch</h2>
-                        <form onSubmit={handleSubmit}> 
-                            <Row>
-                                <Col sm={6} className="px-1">
-                                    <input type="text" value={formInputDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName',e.target.value)} />
-                                </Col>
-                                <Col sm={6} className="px-1">
-                                <input type="text" value={formInputDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName',e.target.value)} />
-                                </Col>
-                                <Col sm={6} className="px-1">
-                                <input type="email" value={formInputDetails.email} placeholder="example@gmail.com" onChange={(e) => onFormUpdate('email',e.target.value)} />
-                                </Col>
-                                <Col sm={6} className="px-1">
-                                <input type="tel" value={formInputDetails.phone} placeholder="Contact Number" onChange={(e) => onFormUpdate('phone',e.target.value)} />
-                                </Col>
-                                <Col className="px-1">
-                                <input type="text" value={formInputDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message',e.target.value)} />
-                                    <button type="submit"><span>{buttonText}</span></button>   
-                                    {/* button text is a variable, that has its value changed depending on the state */}
-                                </Col>
-                                {
-                                    status.message &&
-                                    <Col>
-                                        <p className={status.success === false ? "danger" : "success"}>
-                                            {status.message}
-                                        </p>
-                                    </Col>
-                                }
-                            </Row>
-                        </form>
-                    </Col>
-                </Row>
-            </Container>
-        </section>
-    );
-}
+      setClear('')
+      setMessage('')
+      setEmail('')
+  };
+  function handleInputChange(event) {
+    setClear(event.target.value);
+  }
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
+  function handleMessageChange(event) {
+    setMessage(event.target.value);
+  }
+  return (
+    <div className='contact-forms' id='connect-button'>
+    <h2 > Contact Me </h2>
+        <form ref={form} onSubmit={sendEmail}>
+        <input type="text" name="user_name" value={clear} onChange={handleInputChange} placeholder='Name' required />
+        <input type="email" name="user_email" value={email} onChange={handleEmailChange} placeholder='example@gmail.com' required/>
+        <textarea name="message" value={message} onChange={handleMessageChange} placeholder='Message' required/>
+        <input type="submit" value="Send" />
+        </form>
+    </div>
+  );
+};

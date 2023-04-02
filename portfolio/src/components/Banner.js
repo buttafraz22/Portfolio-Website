@@ -46,6 +46,9 @@ export const Banner = () =>{
         <section className="banner" id="home">
             <Container>
                 <Row className="align-items-center">
+                    <Col  xs={12} md={6} xl={5}>
+                        <img src={headerImg} alt="Header Image"  style={{ height: '70%', width: '70%', padding: 40,marginTop:80 }}/>
+                    </Col>
                     <Col xs={12} md={6} xl={7}>
                         <span className="tagline">
                             Welcome to my Portfolio Website!
@@ -58,9 +61,6 @@ export const Banner = () =>{
                             deadlines. 
                         </p>
                         <button onClick = {() => console.log('connect')}>Let's Connect! <ArrowRightCircle size={25}/></button>
-                    </Col>
-                    <Col  xs={12} md={6} xl={5}>
-                        <img src={headerImg} alt="Header Image"  style={{ height: '70%', width: '70%', padding: 40,marginTop:80 }}/>
                     </Col>
                 </Row>
             </Container>
